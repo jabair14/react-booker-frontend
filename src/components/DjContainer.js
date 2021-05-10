@@ -8,7 +8,6 @@ function DjContainer({ djs }) {
             DJ Container
             <div className="djcards">
                 <DjCard djs={djs}/>
-                
             </div>
         </div>
 
