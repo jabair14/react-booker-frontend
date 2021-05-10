@@ -1,9 +1,16 @@
 import DjDetails from "./DjDetails";
 
-function DjCard() {
+function DjCard({ djs }) {
+
+    
+
+     const djCardInfo = djs.map(dj => <DjDetails key={dj.id} {...dj} />)
+     console.log(djCardInfo)
+
     return (
-        <div class="card" style={{ width: "18rem;" }}>
-            <DjDetails />
+        <div class="card text-white bg-secondary mb-3" style={{ width: "18rem;" }}>
+            {djCardInfo}
+            
         </div>
 
     )

@@ -1,13 +1,15 @@
-function DjDetails() {
+function DjDetails({ id, name, bio, image = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png", genre, rate, link }) {
+
+
     return (
         <>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" class="card-img-top" alt="placeholder" />
+            <img src={image} class="card-img-top" alt={name} />
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{name}</h5>
                 <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                    {bio}
                 </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="#" class="btn btn-primary">More Info...</a>
             </div>
         </>
     )

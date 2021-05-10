@@ -1,15 +1,14 @@
 import DjCard from "./DjCard";
 
-function DjContainer() {
+function DjContainer({ djs }) {
+
+   
     return (
         <div className="container">
             DJ Container
-            <div className="col-md-4">
-                <DjCard />
-                <DjCard />
-                <DjCard />
-                <DjCard />
-                <DjCard />
+            <div className="djcards">
+                <DjCard djs={djs}/>
+                
             </div>
         </div>
 
