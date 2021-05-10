@@ -6,9 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="logo">
-          <img src="../public/djcontrols.jpeg" alt="dj-controls"/>
-        </div>
+          <img src="https://www.pioneerdj.com/-/media/pioneerdj/images/news/2017/ddj-sr2/ddj-sr2-news-header.jpg?mw=1024&hash=2DDF12194CAFF9DF37DFD41B89D4BDD2" class="img-fluid" alt="dj-controls" style={{width: "80%"}} />
         <NavBar />
         <DjContainer  />
       </header>

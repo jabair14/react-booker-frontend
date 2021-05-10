@@ -4,13 +4,15 @@ function DjContainer() {
     return (
         <div className="container">
             DJ Container
-            <DjCard />
-            <DjCard />
-            <DjCard />
-            <DjCard />
-            <DjCard />
+            <div className="col-md-4">
+                <DjCard />
+                <DjCard />
+                <DjCard />
+                <DjCard />
+                <DjCard />
+            </div>
         </div>
-        
+
     )
 }
 
