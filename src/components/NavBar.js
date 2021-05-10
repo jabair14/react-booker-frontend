@@ -1,5 +1,7 @@
 import SearchBar from "./SearchBar";
 import { useState } from 'react';
+import { Switch, Route } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 
 function NavBar({ setSearchTerm }) {
@@ -19,13 +21,16 @@ function NavBar({ setSearchTerm }) {
         <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">DJs</a>
+              <NavLink class="nav-link active" aria-current="page" to="/">DJs</NavLink>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">My Profile</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Bookings</a>
+            </li>
+            <li class="nav-item">
+              <NavLink class="nav-link" to="/login">Login</NavLink>
             </li>
           </ul>
           <ul class="navbar-nav">
