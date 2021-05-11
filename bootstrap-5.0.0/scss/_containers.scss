@@ -8,6 +8,7 @@
   // 100% wide container at all breakpoints
   .container-fluid {
     @include make-container();
+    // flex-direction: row;
   }
 
   // Responsive containers that are 100% wide until a breakpoint

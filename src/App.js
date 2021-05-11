@@ -11,7 +11,7 @@ import DjPage from './components/DjPage';
 function App() {
 
   const [djs, setDjs] = useState([])
-  const [searchTerm, setSearchTerm] = useState([])
+  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
     fetch('http://127.0.0.1:3000/djs')
@@ -20,32 +20,33 @@ function App() {
   }, [])
 
   const filteredDjs = djs.filter(dj => {
-    return dj.name.includes(searchTerm)
+    return dj.name.toLowerCase().includes(searchTerm.toLowerCase())
   })
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src="https://crackmagazine.net/wp-content/uploads/2021/03/191116_PRINTWORKS_BuggedOut_JakeDavis_@hungryvisuals-3677-scaled.jpg" class="img-fluid" alt="dj-controls" style={{ width: "100%", height: 350 }} />
+        
 
         <Switch>
           <Route exact path="/">
             <LandingPage />
           </Route>
           <Route exact path="/djs">
-          <NavBar setSearchTerm={setSearchTerm} />
+            <NavBar setSearchTerm={setSearchTerm} />
             <DjContainer djs={filteredDjs} />
           </Route>
           <Route exact path="/profilepage">
-          <NavBar setSearchTerm={setSearchTerm} />
+            <NavBar setSearchTerm={setSearchTerm} />
             <ProfilePage />
           </Route>
           <Route exact path="/bookingform">
-          <NavBar setSearchTerm={setSearchTerm} />
+            <NavBar setSearchTerm={setSearchTerm} />
             <BookingForm />
           </Route>
           <Route exact path="/djs/:id">
-          <DjPage />
+            {/* <NavBar setSearchTerm={setSearchTerm} /> */}
+            <DjPage />
           </Route>
         </Switch>
       </header>

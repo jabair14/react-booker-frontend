@@ -9,15 +9,15 @@ function DjDetails({ id, name, bio, image = "https://upload.wikimedia.org/wikipe
     }
 
     return (
-        <>
-            <img src={image} class="card-img-top" alt={name} />
-            <div class="card-body">
-                <h5 class="card-title">{name}</h5>
-               
-                {/* <button onClick={toggleDetails} class="btn btn-primary">{details ? "Less" : "More"} Info...</button> */}
-                <Link to={`/djs/${id}`}>More Info</Link>
+        <div className="card text-white bg-secondary mb-3" style={{ width: "18rem;" }}>
+            <img src={image} className="card-img-top" alt={name} />
+            <div className="card-body">
+                <h5 className="card-title">{name}</h5>
+
+                {/* <button onClick={toggleDetails} className="btn btn-primary">{details ? "Less" : "More"} Info...</button> */}
+                <Link to={`/djs/${id}`}><button type="button" className="btn btn-primary btn-lg">More Info</button></Link>
             </div>
-        </>
+        </div>
     )
 }
 

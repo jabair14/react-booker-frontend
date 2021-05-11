@@ -22,7 +22,7 @@ function Login () {
         
        <br/>
        <br/>
-        <button onClick={toggleLoginForm} type="button" class="btn btn-primary btn-lg">Login</button>
+        <button onClick={toggleLoginForm} type="button" className="btn btn-primary btn-lg">Login</button>
         <form className="login-form" style={{ display: showLogin? "" : "none" }}>
             <label> username </label>
             <br></br>
@@ -40,7 +40,7 @@ function Login () {
     
        
         <br/>
-            <button onClick={toggleSignupForm} type="button" class="btn btn-secondary btn-lg">Signup</button>
+            <button onClick={toggleSignupForm} type="button" className="btn btn-secondary btn-lg">Signup</button>
         <form className="signup-form" style={{ display: showSignup ? "" : "none" }}>
        
             <label> name </label>
