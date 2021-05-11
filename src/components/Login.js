@@ -21,7 +21,7 @@ function Login () {
             <br></br>
             <label> password </label>
             <br></br>
-            <input type="text"/>
+            <input type="password"/>
             <br></br>
             <br></br>
             <button type="submit">Login</button>

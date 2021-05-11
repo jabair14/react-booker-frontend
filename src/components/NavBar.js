@@ -21,16 +21,16 @@ function NavBar({ setSearchTerm }) {
         <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <NavLink class="nav-link active" aria-current="page" to="/">DJs</NavLink>
+              <NavLink class="nav-link active" aria-current="page" to="/djs">DJs</NavLink>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">My Profile</a>
+              <NavLink class="nav-link" to="/profilepage">My Profile</NavLink>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Bookings</a>
+              <NavLink class="nav-link" to="/bookingform">Bookings</NavLink>
             </li>
             <li class="nav-item">
-              <NavLink class="nav-link" to="/login">Login</NavLink>
+              <NavLink class="nav-link" to="/">Login</NavLink>
             </li>
           </ul>
           <ul class="navbar-nav">
@@ -40,8 +40,8 @@ function NavBar({ setSearchTerm }) {
           </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item" href="#">Genre</a></li>
-                <li><a class="dropdown-item" href="#">Price Ascending</a></li>
-                <li><a class="dropdown-item" href="#">Price Descneding</a></li>
+                <li><a class="dropdown-item" href="#">Price ↑ Ascending</a></li>
+                <li><a class="dropdown-item" href="#">Price ↓ Descneding</a></li>
               </ul>
             </li>
           </ul>
