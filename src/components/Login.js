@@ -4,17 +4,26 @@ import React, { useState } from "react"
 
 function Login () {
 
-    const [showForm, setShowForm] = useState(false)
+    const [showSignup, setSignup] = useState(false)
+    const [showLogin, setLogin] = useState(false)
 
     const history = useHistory()
 
     const toggleSignupForm = () => {
-        setShowForm(showForm => !showForm)
+        setSignup(showSignup => !showSignup)
+    }
+
+    const toggleLoginForm = () => {
+        setLogin(showLogin => !showLogin)
+
     }
     return (
         <>
-        <h1>Login</h1>
-        <form className="login-form">
+        
+       <br/>
+       <br/>
+        <button onClick={toggleLoginForm} type="button" class="btn btn-primary btn-lg">Login</button>
+        <form className="login-form" style={{ display: showLogin? "" : "none" }}>
             <label> username </label>
             <br></br>
             <input type="text"/>
@@ -28,9 +37,11 @@ function Login () {
             <br></br>
             <br></br>
         </form>
-        <ln></ln>
-            <button onClick={toggleSignupForm}>Signup</button>
-        <form className="signup-form" style={{ display: showForm ? "" : "none" }}>
+    
+       
+        <br/>
+            <button onClick={toggleSignupForm} type="button" class="btn btn-secondary btn-lg">Signup</button>
+        <form className="signup-form" style={{ display: showSignup ? "" : "none" }}>
        
             <label> name </label>
             <br></br>
@@ -57,6 +68,7 @@ function Login () {
             <br></br>
             <br></br>
         </form>
+        
 
         </>
 

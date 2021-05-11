@@ -6,6 +6,7 @@ import { Switch, Route } from "react-router-dom"
 import LandingPage from './components/LandingPage';
 import ProfilePage from './components/ProfilePage';
 import BookingForm from './components/BookingForm';
+import DjPage from './components/DjPage';
 
 function App() {
 
@@ -42,6 +43,9 @@ function App() {
           <Route exact path="/bookingform">
           <NavBar setSearchTerm={setSearchTerm} />
             <BookingForm />
+          </Route>
+          <Route exact path="/djs/:id">
+          <DjPage />
           </Route>
         </Switch>
       </header>
