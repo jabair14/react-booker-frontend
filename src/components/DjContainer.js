@@ -8,10 +8,14 @@ function DjContainer({ djs }) {
 
     return (
         <div className="container-lg col-lg">
-            DJ Container
+            <h1> DJ Roster</h1>
+            
+            <div className="cards">
+
             {/* <div className="djcards "> */}
                         <DjCard djs={djs} />
             {/* </div> */}
+            </div>
         </div>
 
     )

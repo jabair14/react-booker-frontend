@@ -28,9 +28,6 @@ function NavBar({ setSearchTerm }) {
             <li className="nav-item">
               <NavLink className="nav-link" to="/profilepage">My Profile</NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/bookingform">Bookings</NavLink>
-            </li>
             {/* <li className="nav-item">
               <NavLink className="nav-link" to="/">Login</NavLink>
             </li> */}

@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom"
 import LandingPage from './components/LandingPage';
 import ProfilePage from './components/ProfilePage';
-import BookingForm from './components/BookingForm';
 import DjPage from './components/DjPage';
 import 'semantic-ui-css/semantic.min.css'
 
@@ -13,6 +12,7 @@ function App() {
 
   const [djs, setDjs] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
+  const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
     fetch('http://127.0.0.1:3000/djs')
@@ -23,6 +23,11 @@ function App() {
   const filteredDjs = djs.filter(dj => {
     return dj.name.toLowerCase().includes(searchTerm.toLowerCase())
   })
+
+  const handleAddBooking = (newBooking) => {
+    const newBookingArr = [newBooking, ...bookings];
+    setBookings(newBookingArr);
+  }
 
   return (
     <div className="App">
@@ -41,13 +46,9 @@ function App() {
             <NavBar setSearchTerm={setSearchTerm} />
             <ProfilePage />
           </Route>
-          <Route exact path="/bookingform">
-            <NavBar setSearchTerm={setSearchTerm} />
-            <BookingForm />
-          </Route>
           <Route exact path="/djs/:id">
             {/* <NavBar setSearchTerm={setSearchTerm} /> */}
-            <DjPage />
+            <DjPage onAddBooking={handleAddBooking}/>
           </Route>
         </Switch>
       </header>

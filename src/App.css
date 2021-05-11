@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.cards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  
+}
