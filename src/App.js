@@ -7,6 +7,7 @@ import LandingPage from './components/LandingPage';
 import ProfilePage from './components/ProfilePage';
 import BookingForm from './components/BookingForm';
 import DjPage from './components/DjPage';
+import 'semantic-ui-css/semantic.min.css'
 
 function App() {
 
