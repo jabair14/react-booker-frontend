@@ -12,7 +12,7 @@ function NavBar({ setSearchTerm }) {
   // }
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style={{width: "100%"}}>
       <div class="container-fluid">
         <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,9 +29,9 @@ function NavBar({ setSearchTerm }) {
             <li class="nav-item">
               <NavLink class="nav-link" to="/bookingform">Bookings</NavLink>
             </li>
-            <li class="nav-item">
+            {/* <li class="nav-item">
               <NavLink class="nav-link" to="/">Login</NavLink>
-            </li>
+            </li> */}
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item dropdown">

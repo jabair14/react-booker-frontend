@@ -11,7 +11,7 @@ function SearchBar({ setSearchTerm }) {
     return (
         <nav class="navbar navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand">Navbar</a>
+                <a class="navbar-brand"/>
                 <form class="d-flex" onSubmit={handleSubmit} >
                     <input 
                     class="form-control me-2" 
