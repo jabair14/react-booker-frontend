@@ -36,17 +36,18 @@ function DjPage({ onAddBooking }) {
   const { name, image, link, bio, genre, rate, id, bookings } = djs
 
   const showEvents = bookings.map(event => {
-    console.log(event);
     return (
       <div className="cards">
-        <div className="card text-white bg-secondary mb-1" style={{ width: "18rem;" }}>
+        <div className="card text-white bg-secondary mb-6" style={{ width: "18rem;" }}>
           <div className="card-body">
             <h5 className="card-title">
               {event.event_name}
             </h5>
             <p className="card-text">
-              <p>{event.date_format}</p>
-              <p>{event.location}</p>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">{event.date_format}</li>
+                <li className="list-group-item">{event.location}</li>
+              </ul>
             </p>
           </div>
         </div>
@@ -118,7 +119,7 @@ function DjPage({ onAddBooking }) {
           <h3>Upcoming Shows:</h3>
           {showEvents}
         </li>
-        <li className="list-group-item"><iframe src="https://open.spotify.com/embed/artist/6wMr4zKPrrR0UVz08WtUWc" width="250" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"> </iframe></li>
+        <li className="list-group-item"><iframe src="https://open.spotify.com/embed/artist/6wMr4zKPrrR0UVz08WtUWc" width="250" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"> </iframe></li>
         <li className="list-group-item">
           <Modal
             onClose={() => setOpen(false)}
