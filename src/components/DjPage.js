@@ -88,7 +88,7 @@ function DjPage({ onAddBooking }) {
 
   return (
     <>
-      <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" style={{ width: "100%" }}>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{ width: "100%" }}>
         <div className="container-fluid">
           <a className="navbar-brand" href="#"></a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
