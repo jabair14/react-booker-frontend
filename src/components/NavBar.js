@@ -26,7 +26,7 @@ function NavBar({ setSearchTerm }) {
               <NavLink className="nav-link active" aria-current="page" to="/djs">DJs</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/profilepage">My Profile</NavLink>
+              <NavLink className="nav-link" to="/clients/:id">My Profile</NavLink>
             </li>
             {/* <li className="nav-item">
               <NavLink className="nav-link" to="/">Login</NavLink>

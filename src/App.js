@@ -57,7 +57,7 @@ function App() {
         
       })
     }
-    console.log(currentUser)
+
 
     return (
       <div className="App">
@@ -66,7 +66,7 @@ function App() {
 
         <Switch>
           <Route exact path="/">
-          <img src="https://crackmagazine.net/wp-content/uploads/2021/03/191116_PRINTWORKS_BuggedOut_JakeDavis_@hungryvisuals-3677-scaled.jpg" class="img-fluid" alt="dj-controls" style={{ width: "95%", height: 350 }} />
+          <img src="https://crackmagazine.net/wp-content/uploads/2021/03/191116_PRINTWORKS_BuggedOut_JakeDavis_@hungryvisuals-3677-scaled.jpg" class="img-fluid" alt="dj-controls" style={{ width: "100%", height: 350 }} />
             <LandingPage handleLoginClient={handleLoginClient}/>
           </Route>
           <Route exact path="/djs">
@@ -81,7 +81,7 @@ function App() {
             <DjPage onAddBooking={handleAddBooking} />
           </Route>
           <Route exact path="/clients/:id">
-          <NavBar  />
+          <img src="https://crackmagazine.net/wp-content/uploads/2021/03/191116_PRINTWORKS_BuggedOut_JakeDavis_@hungryvisuals-3677-scaled.jpg" class="img-fluid" alt="dj-controls" style={{ width: "100%", height: 350 }} />
             <ProfilePage currentUser={currentUser}/>
           </Route>
         </Switch>

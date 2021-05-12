@@ -59,37 +59,6 @@ function Login({ handleLoginClient }) {
         })
     }
 
-    // const handleLoginClient = (e) => {
-    //     e.preventDefault()
-
-    //     const usernameInput = e.target.username.value
-    //     const passwordInput = e.target.password.value
-
-        
-
-    //     fetch('http://127.0.0.1:3000/clients')
-    //     .then(res => res.json())
-    //     .then(clients => {
-         
-    //         clients.filter(client => {
-                
-    //             if(client.username === usernameInput && client.password === passwordInput){
-    //                 setCurrentUser(client.id)
-    //                 history.push(`/clients/${client.id}`)
-    //             } else {
-    //                 return "Username and/or Password does not match!"
-    //             }
-                
-    //         })
-
-    //     })
-    // }
-
-    
-
-
-
-
     return (
         <>
             <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" style={{ width: "100%", align: "left" }}>
@@ -119,7 +88,7 @@ function Login({ handleLoginClient }) {
                             <label>Password</label>
                             <input 
                             placeholder='Password' 
-                            type="text"
+                            type="password"
                             name='password' 
                             value={password}
                             onChange={(e)=>setPassword(e.target.value)}

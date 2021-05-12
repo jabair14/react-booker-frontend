@@ -13,12 +13,7 @@ function DjPage({ onAddBooking }) {
   const [location, setLocation] = useState('')
   const [event_name, setEventName] = useState('')
   const [client_id, setClientId] = useState(17)
-  const [dj_id, setDjId] = useState('')
-  const [delBookings, setDelBookings] = useState([])
   const history = useHistory()
-
-  // console.log(params.id)
-
 
   const params = useParams()
 
@@ -100,7 +95,7 @@ function DjPage({ onAddBooking }) {
                 <NavLink className="nav-link active" aria-current="page" to="/djs">DJs</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/profilepage">My Profile</NavLink>
+                <NavLink className="nav-link" to="/clients/:id">My Profile</NavLink>
               </li>
             </ul>
           </div>
