@@ -1,6 +1,27 @@
-function ProfilePage() {
+import { useState, useEffect } from 'react' 
+
+function ProfilePage({ currentUser }) {
+
+    const [user, setUser] = useState([])
+
+
+
+    useEffect(() => {
+        
+        fetch(`http://127.0.0.1:3000/clients/${currentUser}`)
+        .then(resp => resp.json())
+        .then(user => {
+            setUser(user)
+        })
+    }, [])
+    
+    console.log(user)
+
     return (
-        <h1> My Profile </h1>
+        <div>
+            <h1> {user.name} </h1>
+
+        </div>
     )
 }
 

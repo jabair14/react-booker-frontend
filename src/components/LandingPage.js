@@ -1,8 +1,8 @@
 import Login from "./Login";
 
-function LandingPage() {
+function LandingPage({ handleLoginClient }) {
     return (
-        <Login />
+        <Login handleLoginClient={handleLoginClient}/>
     )
 }
 
