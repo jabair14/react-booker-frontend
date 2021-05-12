@@ -4,39 +4,55 @@ import { Button, Header, Image, Modal, Checkbox, Form } from 'semantic-ui-react'
 
 
 
-function DjPage({onAddBooking}) {
-
+function DjPage({ onAddBooking }) {
   const [djs, setDjs] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState('')
-  const [hours_booked, setHours] = useState (1)
-  const [location, setLocation] = useState ('')
-  const [event_name, setEventName] = useState ('')
+  const [hours_booked, setHours] = useState(1)
+  const [location, setLocation] = useState('')
+  const [event_name, setEventName] = useState('')
   const [client_id, setClientId] = useState(17)
   const [dj_id, setDjId] = useState('')
+  const [delBookings, setDelBookings] = useState([])
   const history = useHistory()
-  
+
   // console.log(params.id)
-  
-  
+
+
   const params = useParams()
-  
+
   useEffect(() => {
     fetch(`http://127.0.0.1:3000/djs/${params.id}`)
-    .then((r) => r.json())
+      .then((r) => r.json())
       .then((dj) => {
         setDjs(dj);
         setIsLoaded(true)
       });
   }, [params.id]);
-  
-  if (!isLoaded) return <h2>Loading...</h2>
-  
-  const { name, image, link, bio, genre, rate, id } = djs
-  // console.log(name)
 
-  // console.log(id)
+  if (!isLoaded) return <h2>Loading...</h2>
+
+  const { name, image, link, bio, genre, rate, id, bookings } = djs
+
+  const showEvents = bookings.map(event => {
+    console.log(event);
+    return (
+      <div className="cards">
+        <div className="card text-white bg-secondary mb-1" style={{ width: "18rem;" }}>
+          <div className="card-body">
+            <h5 className="card-title">
+              {event.event_name}
+            </h5>
+            <p className="card-text">
+              <p>{event.date_format}</p>
+              <p>{event.location}</p>
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  })
 
   const handleBookingSubmit = (e) => {
     e.preventDefault()
@@ -48,7 +64,7 @@ function DjPage({onAddBooking}) {
       event_name,
       client_id,
       dj_id: id,
-    };   
+    };
 
     fetch('http://127.0.0.1:3000/bookings', {
       method: 'POST',
@@ -57,14 +73,16 @@ function DjPage({onAddBooking}) {
       },
       body: JSON.stringify(formData)
     })
-    .then(res => res.json())
-    .then(booking => {
-      onAddBooking(booking)
-      history.push(`/djs/${id}`)
-    })
+      .then(res => res.json())
+      .then(booking => {
+        onAddBooking(booking)
+        history.push(`/djs/${id}`)
+      })
+  }
 
-    console.log("submitted", formData)
-  } 
+  console.log()
+
+
 
 
   return (
@@ -96,7 +114,10 @@ function DjPage({onAddBooking}) {
       <ul className="list-group list-group-flush">
         <li className="list-group-item">Genre: {genre}</li>
         <li className="list-group-item">Rate: ${rate}/hour</li>
-        <li className="list-group-item">{link}</li>
+        <li className="list-group-item">
+          <h3>Upcoming Shows:</h3>
+          {showEvents}
+        </li>
         <li className="list-group-item"><iframe src="https://open.spotify.com/embed/artist/6wMr4zKPrrR0UVz08WtUWc" width="250" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"> </iframe></li>
         <li className="list-group-item">
           <Modal
@@ -110,48 +131,48 @@ function DjPage({onAddBooking}) {
               <Image size='medium' src={image} wrapped />
               <Modal.Description>
                 <Form onSubmit={handleBookingSubmit}>
-                <Form.Field>
-                <input type="hidden" id="client_id" name="client_id" value={client_id}/>
-                </Form.Field>
-                <Form.Field>
+                  <Form.Field>
+                    <input type="hidden" id="client_id" name="client_id" value={client_id} />
+                  </Form.Field>
+                  <Form.Field>
                     <label>Event Name</label>
                     <input type="text"
-                    id="event_name"
-                    name="event_name"
-                    value={event_name}
-                    onChange={(e)=> setEventName(e.target.value)}/>
+                      id="event_name"
+                      name="event_name"
+                      value={event_name}
+                      onChange={(e) => setEventName(e.target.value)} />
                   </Form.Field>
                   <Form.Field>
                     <label>Date</label>
                     <input type="date"
-                    id="date"
-                    name="date"
-                    value={date}
-                    onChange={(e)=> setDate(e.target.value)}/>
+                      id="date"
+                      name="date"
+                      value={date}
+                      onChange={(e) => setDate(e.target.value)} />
                   </Form.Field>
                   <Form.Field>
                     <label>Hours Booked</label>
                     <input type="number"
-                    id="hours"
-                    name="hours"
-                    value={hours_booked}
-                    onChange={(e)=> setHours(e.target.value)}
-                    min="1" max="5"/>
+                      id="hours"
+                      name="hours"
+                      value={hours_booked}
+                      onChange={(e) => setHours(e.target.value)}
+                      min="1" max="5" />
                   </Form.Field>
                   <Form.Field>
                     <label>Location</label>
-                    <select id="location" name="location" 
-                    id="location"
-                    name="location"
-                    value={location}
-                    onChange={(e)=> setLocation(e.target.value)}
+                    <select id="location" name="location"
+                      id="location"
+                      name="location"
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
                     >
                       <option value=''>Select City</option>
-                      <option value="new york">New York</option> 
-                      <option value="los angeles">Los Angeles</option> 
-                      <option value="philadelphia">Philadelphia</option> 
-                      <option value="miami">Miami</option> 
-                      </select>
+                      <option value="new york">New York</option>
+                      <option value="los angeles">Los Angeles</option>
+                      <option value="philadelphia">Philadelphia</option>
+                      <option value="miami">Miami</option>
+                    </select>
                   </Form.Field>
                   <Form.Field>
                     <label>Price: ${rate}/hour</label>
@@ -167,13 +188,6 @@ function DjPage({onAddBooking}) {
               <Button color='black' onClick={() => setOpen(false)}>
                 Cancel
         </Button>
-              {/* <Button
-                content="Yep, that's me"
-                labelPosition='right'
-                icon='checkmark'
-                onClick={() => setOpen(false)}
-                positive
-              /> */}
             </Modal.Actions>
           </Modal>
         </li>

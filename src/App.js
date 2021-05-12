@@ -9,7 +9,6 @@ import DjPage from './components/DjPage';
 import 'semantic-ui-css/semantic.min.css'
 
 function App() {
-
   const [djs, setDjs] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
   const [bookings, setBookings] = useState([]);
@@ -47,8 +46,7 @@ function App() {
             <ProfilePage />
           </Route>
           <Route exact path="/djs/:id">
-            {/* <NavBar setSearchTerm={setSearchTerm} /> */}
-            <DjPage onAddBooking={handleAddBooking}/>
+            <DjPage onAddBooking={handleAddBooking} />
           </Route>
         </Switch>
       </header>
