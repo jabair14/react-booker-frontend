@@ -1,25 +1,32 @@
 import SearchBar from "./SearchBar";
 import { useState } from 'react';
-import { Switch, Route } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
-import { Dropdown } from 'semantic-ui-react'
+// import { Dropdown } from 'semantic-ui-react'
 
 
-function NavBar({ setSearchTerm, currentUser, filteredDjs }) {
+function NavBar({ setSearchTerm, currentUser, setSortBy, sortBy  }) {
   // const [dropdown, setDropdown ] = useState(false)
-  const [sortBy, setSortBy] = useState('none')
+  
 
   // function toggleDropdown() {
   //   setDropdown(dropdown => !dropdown)
   // }
-  const handleSort = () => {
-      if (sortBy === "Price ↑ Ascending") {
-          filteredDjs.sort((dj_a, dj_b) => {
-              console.log(dj_a.rate)
-              return dj_a.rate - dj_b.rate
-          })
-      }
+//   const handleSort = () => {
+//       if (sortBy === "Price ↑ Ascending") {
+//           filteredDjs.sort((dj_a, dj_b) => {
+//               console.log(dj_a.rate)
+//               return dj_a.rate - dj_b.rate
+//           })
+//       }
+//     }
+    function changeSort(e) {
+        setSortBy(e.target.value)
     }
+
+
+    
+    
+
 
     // const options = [
     //     { key: 1, text: 'Choice 1', value: 1 },
@@ -57,11 +64,12 @@ function NavBar({ setSearchTerm, currentUser, filteredDjs }) {
               <a className="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Sort By
           </a>
-              <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                <li><a className="dropdown-item" href="#">Genre</a></li>
-                <li><a onClick={handleSort}className="dropdown-item" >Price ↑ Ascending</a></li>
-                <li><a className="dropdown-item" href="#">Price ↓ Descneding</a></li>
-              </ul>
+              <select onChange={changeSort} className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink" value={sortBy}>
+                  
+                {/* <li><a className="dropdown-item" href="#">Genre</a></li> */}
+                <option className="dropdown-item" value="Price ↑ Ascending">Price ↑ Ascending</option>
+                <option className="dropdown-item" value="Price ↓ Descending">Price ↓ Descending</option>
+              </select>
             </li>
           </ul>
           <SearchBar setSearchTerm={setSearchTerm} />

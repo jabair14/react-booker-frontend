@@ -13,6 +13,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("")
   const [bookings, setBookings] = useState([])
   const [currentUser, setCurrentUser] = useState({})
+  const [sortBy, setSortBy] = useState('none')
 
   const history = useHistory()
 
@@ -56,7 +57,15 @@ function App() {
         })
         
       })
+      
     }
+    const handleSort = filteredDjs.sort((dj_a, dj_b ) => {
+      if (sortBy === "Price ↓ Descending"){
+          return (dj_a.rate - dj_b.rate) 
+      } else if (sortBy === "Price ↑ Ascending") {
+          return (dj_b.rate - dj_a.rate)
+      }
+  })
 
 
     return (
@@ -70,8 +79,8 @@ function App() {
             <LandingPage handleLoginClient={handleLoginClient} />
           </Route>
           <Route exact path="/djs">
-            <NavBar setSearchTerm={setSearchTerm} currentUser={currentUser} djs={filteredDjs} />
-            <DjContainer djs={filteredDjs} />
+            <NavBar setSearchTerm={setSearchTerm} currentUser={currentUser} djs={handleSort} setSortBy={setSortBy} sortBy={sortBy}/>
+            <DjContainer djs={handleSort} />
           </Route>
           {/* <Route exact path="/profilepage">
           <NavBar setSearchTerm={setSearchTerm} />
