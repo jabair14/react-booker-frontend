@@ -2,14 +2,31 @@ import SearchBar from "./SearchBar";
 import { useState } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
+import { Dropdown } from 'semantic-ui-react'
 
 
-function NavBar({ setSearchTerm }) {
+function NavBar({ setSearchTerm, currentUser, filteredDjs }) {
   // const [dropdown, setDropdown ] = useState(false)
+  const [sortBy, setSortBy] = useState('none')
 
   // function toggleDropdown() {
   //   setDropdown(dropdown => !dropdown)
   // }
+  const handleSort = () => {
+      if (sortBy === "Price ↑ Ascending") {
+          filteredDjs.sort((dj_a, dj_b) => {
+              console.log(dj_a.rate)
+              return dj_a.rate - dj_b.rate
+          })
+      }
+    }
+
+    // const options = [
+    //     { key: 1, text: 'Choice 1', value: 1 },
+    //     { key: 2, text: 'Choice 2', value: 2 },
+    //     { key: 3, text: 'Choice 3', value: 3 },
+    //   ]
+
 
   return (
     <>
@@ -26,7 +43,7 @@ function NavBar({ setSearchTerm }) {
               <NavLink className="nav-link active" aria-current="page" to="/djs">DJs</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/clients/:id">My Profile</NavLink>
+              <NavLink className="nav-link" to={`/clients/${currentUser}`}>My Profile</NavLink>
             </li>
             {/* <li className="nav-item">
               <NavLink className="nav-link" to="/">Login</NavLink>
@@ -34,12 +51,15 @@ function NavBar({ setSearchTerm }) {
           </ul>
           <ul className="navbar-nav">
             <li className="nav-item dropdown">
+            
+                {/* <Dropdown clearable options={options} selection /> */}
+
               <a className="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Sort By
           </a>
               <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a className="dropdown-item" href="#">Genre</a></li>
-                <li><a className="dropdown-item" href="#">Price ↑ Ascending</a></li>
+                <li><a onClick={handleSort}className="dropdown-item" >Price ↑ Ascending</a></li>
                 <li><a className="dropdown-item" href="#">Price ↓ Descneding</a></li>
               </ul>
             </li>

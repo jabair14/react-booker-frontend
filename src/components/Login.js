@@ -55,7 +55,8 @@ function Login({ handleLoginClient }) {
         .then(res => res.json())
         .then(client => {
             addClient(client)
-        history.push(`/clients/${client.id}`)
+            
+        history.push(`/`)
         })
     }
 

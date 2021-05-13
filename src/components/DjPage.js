@@ -4,7 +4,7 @@ import { Button, Header, Image, Modal, Checkbox, Form } from 'semantic-ui-react'
 
 
 
-function DjPage({ onAddBooking }) {
+function DjPage({ onAddBooking, currentUser }) {
   const [djs, setDjs] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [open, setOpen] = useState(false);
@@ -12,7 +12,7 @@ function DjPage({ onAddBooking }) {
   const [hours_booked, setHours] = useState(1)
   const [location, setLocation] = useState('')
   const [event_name, setEventName] = useState('')
-  const [client_id, setClientId] = useState(17)
+  const [client_id, setClientId] = useState('')
   const history = useHistory()
 
   const params = useParams()
@@ -36,6 +36,7 @@ function DjPage({ onAddBooking }) {
         <div className="card text-white bg-secondary mb-6" style={{ width: "18rem;" }}>
           <div className="card-body">
             <h5 className="card-title">
+              Event:
               {event.event_name}
             </h5>
             <p className="card-text">
@@ -58,9 +59,10 @@ function DjPage({ onAddBooking }) {
       hours_booked,
       location,
       event_name,
-      client_id,
+      client_id: currentUser,
       dj_id: id,
     };
+    console.log(formData)
 
     fetch('http://127.0.0.1:3000/bookings', {
       method: 'POST',
@@ -72,7 +74,7 @@ function DjPage({ onAddBooking }) {
       .then(res => res.json())
       .then(booking => {
         onAddBooking(booking)
-        history.push(`/djs/${id}`)
+        history.push(`/djs`)
       })
   }
 
@@ -95,7 +97,7 @@ function DjPage({ onAddBooking }) {
                 <NavLink className="nav-link active" aria-current="page" to="/djs">DJs</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/clients/:id">My Profile</NavLink>
+                <NavLink className="nav-link" to={`/clients/${currentUser}`}>My Profile</NavLink>
               </li>
             </ul>
           </div>
@@ -127,9 +129,9 @@ function DjPage({ onAddBooking }) {
               <Image size='medium' src={image} wrapped />
               <Modal.Description>
                 <Form onSubmit={handleBookingSubmit}>
-                  <Form.Field>
-                    <input type="hidden" id="client_id" name="client_id" value={client_id} />
-                  </Form.Field>
+                  {/* <Form.Field>
+                    <input type="hidden" id="client_id" name="client_id" value={currentUser} />
+                  </Form.Field> */}
                   <Form.Field>
                     <label>Event Name</label>
                     <input type="text"

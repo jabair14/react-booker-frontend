@@ -39,7 +39,7 @@ function App() {
     const passwordInput = e.target.password.value
     
     
-
+  
     fetch('http://127.0.0.1:3000/clients')
     .then(res => res.json())
     .then(clients => {
@@ -67,10 +67,10 @@ function App() {
         <Switch>
           <Route exact path="/">
           <img src="https://crackmagazine.net/wp-content/uploads/2021/03/191116_PRINTWORKS_BuggedOut_JakeDavis_@hungryvisuals-3677-scaled.jpg" class="img-fluid" alt="dj-controls" style={{ width: "100%", height: 350 }} />
-            <LandingPage handleLoginClient={handleLoginClient}/>
+            <LandingPage handleLoginClient={handleLoginClient} />
           </Route>
           <Route exact path="/djs">
-            <NavBar setSearchTerm={setSearchTerm} />
+            <NavBar setSearchTerm={setSearchTerm} currentUser={currentUser} djs={filteredDjs} />
             <DjContainer djs={filteredDjs} />
           </Route>
           {/* <Route exact path="/profilepage">
@@ -78,11 +78,11 @@ function App() {
             <ProfilePage />
           </Route> */}
           <Route exact path="/djs/:id">
-            <DjPage onAddBooking={handleAddBooking} />
+            <DjPage onAddBooking={handleAddBooking} currentUser={currentUser} />
           </Route>
-          <Route exact path="/clients/:id">
+          <Route exact path={`/clients/${currentUser}`}>
           <img src="https://crackmagazine.net/wp-content/uploads/2021/03/191116_PRINTWORKS_BuggedOut_JakeDavis_@hungryvisuals-3677-scaled.jpg" class="img-fluid" alt="dj-controls" style={{ width: "100%", height: 350 }} />
-            <ProfilePage currentUser={currentUser}/>
+            <ProfilePage currentUser={currentUser} setCurrentUser={setCurrentUser}/>
           </Route>
         </Switch>
       </header>

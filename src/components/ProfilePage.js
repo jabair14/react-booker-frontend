@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import { Card, Image, Button, Modal, Header, Checkbox, Form } from 'semantic-ui-react'
 
-function ProfilePage({ currentUser }) {
+function ProfilePage({ currentUser, setCurrentUser }) {
     const [user, setUser] = useState([])
     const [open, setOpen] = useState(false)
     const [name, setName] = useState('')
@@ -49,7 +49,8 @@ function ProfilePage({ currentUser }) {
         })
             .then(res => res.json())
             .then(client => {
-                console.log(client)
+                // console.log(client)
+                setCurrentUser(client)
                 history.push(`/clients/${currentUser}`)
             })
     }
@@ -102,17 +103,19 @@ function ProfilePage({ currentUser }) {
                                 <br />
                                 <label>Avatar</label>
                                 <input
-                                    placeholder='Avatar'
+                                    placeholder={user.avatar}
                                     type="text"
                                     name='avatar'
                                     value={avatar}
+                                    // defaultValue={user.avatar}
                                     onChange={(e) => setAvatar(e.target.value)}
+                                    
                                 />
                             </Form.Field>
                             <Form.Field required>
                                 <label>Name</label>
                                 <input
-                                    placeholder='Name'
+                                    placeholder={user.name}
                                     type="text"
                                     name='name'
                                     value={name}
@@ -122,7 +125,7 @@ function ProfilePage({ currentUser }) {
                             <Form.Field required>
                                 <label>Username</label>
                                 <input
-                                    placeholder='Username'
+                                    placeholder={user.username}
                                     type="text"
                                     name='username'
                                     value={username}
@@ -132,7 +135,7 @@ function ProfilePage({ currentUser }) {
                             <Form.Field required>
                                 <label>Email</label>
                                 <input
-                                    placeholder='Email'
+                                    placeholder={user.email}
                                     type="text"
                                     name='email'
                                     value={email}
@@ -142,7 +145,7 @@ function ProfilePage({ currentUser }) {
                             <Form.Field required>
                                 <label>Password</label>
                                 <input
-                                    placeholder='Password'
+                                    placeholder={user.password}
                                     type="text"
                                     name='password'
                                     value={password}
@@ -152,7 +155,7 @@ function ProfilePage({ currentUser }) {
                             <Form.Field required>
                                 <label>Location</label>
                                 <input
-                                    placeholder='City'
+                                    placeholder={user.location}
                                     type="text"
                                     name='location'
                                     value={location}
