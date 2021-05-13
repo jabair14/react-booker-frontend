@@ -74,6 +74,7 @@ function ProfilePage({ currentUser }) {
                             <li className="nav-item">
                                 <NavLink className="nav-link active" aria-current="page" to="/djs">DJs</NavLink>
                             </li>
+                            
                         </ul>
                     </div>
                 </div>
