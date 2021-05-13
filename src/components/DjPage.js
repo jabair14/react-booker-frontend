@@ -116,7 +116,7 @@ function DjPage({ onAddBooking, currentUser }) {
           <h3>Upcoming Shows:</h3>
           {showEvents}
         </li>
-        <li className="list-group-item"><iframe src="https://open.spotify.com/embed/artist/6wMr4zKPrrR0UVz08WtUWc" width="250" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"> </iframe></li>
+        <li className="list-group-item"><iframe src={link} width="250" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"> </iframe></li>
         <li className="list-group-item">
           <Modal
             onClose={() => setOpen(false)}

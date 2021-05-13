@@ -38,6 +38,7 @@ function ProfilePage({ currentUser, setCurrentUser }) {
             password,
             username,
         }
+        console.log(formData)
 
         fetch(`http://127.0.0.1:3000/clients/${currentUser}`, {
             method: "PATCH",
@@ -49,9 +50,9 @@ function ProfilePage({ currentUser, setCurrentUser }) {
         })
             .then(res => res.json())
             .then(client => {
-                // console.log(client)
-                setCurrentUser(client)
+                console.log(client)
                 history.push(`/clients/${currentUser}`)
+                setCurrentUser(client)
             })
     }
 
