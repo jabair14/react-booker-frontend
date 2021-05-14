@@ -32,11 +32,10 @@ function DjPage({ onAddBooking, currentUser }) {
 
   const showEvents = bookings.map(event => {
     return (
-      <div className="cards">
+      <div className="cards-bookings">
         <div className="card text-white bg-secondary mb-6" style={{ width: "18rem;" }}>
           <div className="card-body">
             <h5 className="card-title">
-              Event:
               {event.event_name}
             </h5>
             <p className="card-text">
@@ -104,11 +103,10 @@ function DjPage({ onAddBooking, currentUser }) {
         </div>
       </nav>
       <h1> {name} </h1>
-      <img src={image} alt={name} />
+      <img src={image} alt={name} style={{ width: "500px", height: "100%" }} />
       <p className="card-text">
         {bio}
       </p>
-
       <ul className="list-group list-group-flush">
         <li className="list-group-item">Genre: {genre}</li>
         <li className="list-group-item">Rate: ${rate}/hour</li>
@@ -116,7 +114,10 @@ function DjPage({ onAddBooking, currentUser }) {
           <h3>Upcoming Shows:</h3>
           {showEvents}
         </li>
-        <li className="list-group-item"><iframe src={link} width="250" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"> </iframe></li>
+      </ul>
+      <br />
+      <ul className="list-group list-group-flush">
+        <li className="list-group-item"><iframe src={link} width="350" height="390" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe></li>
         <li className="list-group-item">
           <Modal
             onClose={() => setOpen(false)}
@@ -183,12 +184,11 @@ function DjPage({ onAddBooking, currentUser }) {
               </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
-              <Button color='black' onClick={() => setOpen(false)}>
-                Cancel
-        </Button>
+              <Button color='black' onClick={() => setOpen(false)}>Cancel</Button>
             </Modal.Actions>
           </Modal>
         </li>
+        <br />
       </ul>
     </>
   )

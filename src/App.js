@@ -17,17 +17,17 @@ function App() {
 
   const history = useHistory()
 
-  
+
   useEffect(() => {
     fetch('http://127.0.0.1:3000/djs')
-    .then(res => res.json())
-    .then(djArr => setDjs(djArr))
+      .then(res => res.json())
+      .then(djArr => setDjs(djArr))
   }, [])
-  
+
   const filteredDjs = djs.filter(dj => {
     return dj.name.toLowerCase().includes(searchTerm.toLowerCase())
   })
-  
+
   const handleAddBooking = (newBooking) => {
     const newBookingArr = [newBooking, ...bookings];
     setBookings(newBookingArr);
@@ -35,51 +35,45 @@ function App() {
 
   const handleLoginClient = (e) => {
     e.preventDefault()
-    
+
     const usernameInput = e.target.username.value
     const passwordInput = e.target.password.value
-    
-    
-  
+
+
+
     fetch('http://127.0.0.1:3000/clients')
-    .then(res => res.json())
-    .then(clients => {
-      
+      .then(res => res.json())
+      .then(clients => {
         clients.filter(client => {
-          
-          if(client.username === usernameInput && client.password === passwordInput){
-                setCurrentUser(client.id)
-                history.push(`/clients/${client.id}`)
-              } else {
-                return "Username and/or Password does not match!"
-              }
-              
+          if (client.username === usernameInput && client.password === passwordInput) {
+            setCurrentUser(client.id)
+            history.push(`/clients/${client.id}`)
+          } else {
+            return "Username and/or Password does not match!"
+          }
         })
-        
       })
-      
+  }
+
+  const handleSort = filteredDjs.sort((dj_a, dj_b) => {
+    if (sortBy === "Price ↓ Descending") {
+      return (dj_a.rate - dj_b.rate)
+    } else if (sortBy === "Price ↑ Ascending") {
+      return (dj_b.rate - dj_a.rate)
     }
-    const handleSort = filteredDjs.sort((dj_a, dj_b ) => {
-      if (sortBy === "Price ↓ Descending"){
-          return (dj_a.rate - dj_b.rate) 
-      } else if (sortBy === "Price ↑ Ascending") {
-          return (dj_b.rate - dj_a.rate)
-      }
   })
 
 
-    return (
-      <div className="App">
+  return (
+    <div className="App">
       <header className="App-header">
-        
-
         <Switch>
           <Route exact path="/">
-          <img src="https://crackmagazine.net/wp-content/uploads/2021/03/191116_PRINTWORKS_BuggedOut_JakeDavis_@hungryvisuals-3677-scaled.jpg" class="img-fluid" alt="dj-controls" style={{ width: "100%", height: 350 }} />
+            <img src="https://crackmagazine.net/wp-content/uploads/2021/03/191116_PRINTWORKS_BuggedOut_JakeDavis_@hungryvisuals-3677-scaled.jpg" class="img-fluid" alt="dj-controls" style={{ width: "100%", height: 350 }} />
             <LandingPage handleLoginClient={handleLoginClient} />
           </Route>
           <Route exact path="/djs">
-            <NavBar setSearchTerm={setSearchTerm} currentUser={currentUser} djs={handleSort} setSortBy={setSortBy} sortBy={sortBy}/>
+            <NavBar setSearchTerm={setSearchTerm} currentUser={currentUser} djs={handleSort} setSortBy={setSortBy} sortBy={sortBy} />
             <DjContainer djs={handleSort} />
           </Route>
           {/* <Route exact path="/profilepage">
@@ -90,8 +84,8 @@ function App() {
             <DjPage onAddBooking={handleAddBooking} currentUser={currentUser} />
           </Route>
           <Route exact path={`/clients/${currentUser}`}>
-          <img src="https://crackmagazine.net/wp-content/uploads/2021/03/191116_PRINTWORKS_BuggedOut_JakeDavis_@hungryvisuals-3677-scaled.jpg" class="img-fluid" alt="dj-controls" style={{ width: "100%", height: 350 }} />
-            <ProfilePage currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+            <img src="https://crackmagazine.net/wp-content/uploads/2021/03/191116_PRINTWORKS_BuggedOut_JakeDavis_@hungryvisuals-3677-scaled.jpg" class="img-fluid" alt="dj-controls" style={{ width: "100%", height: 350 }} />
+            <ProfilePage currentUser={currentUser} setCurrentUser={setCurrentUser} />
           </Route>
         </Switch>
       </header>

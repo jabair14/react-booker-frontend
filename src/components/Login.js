@@ -14,8 +14,8 @@ function Login({ handleLoginClient }) {
     const [location, setLocation] = useState('')
     const [email, setEmail] = useState('')
     const [client, setClient] = useState([])
-    
-   
+
+
 
     const history = useHistory()
 
@@ -48,16 +48,16 @@ function Login({ handleLoginClient }) {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
-                
+
             },
             body: JSON.stringify(formData)
         })
-        .then(res => res.json())
-        .then(client => {
-            addClient(client)
-            
-        history.push(`/`)
-        })
+            .then(res => res.json())
+            .then(client => {
+                addClient(client)
+
+                history.push(`/`)
+            })
     }
 
     return (
@@ -68,31 +68,31 @@ function Login({ handleLoginClient }) {
                     <button onClick={toggleLoginForm} type="button" className="btn btn-primary btn-sm">Login</button>
                     {/* </div> */}
                     {/* <div className="signup-button"> */}
-                    <button onClick={toggleSignupForm} type="button" icon="signup"className="btn btn-secondary btn-sm">Signup</button>
+                    <button onClick={toggleSignupForm} type="button" icon="signup" className="btn btn-secondary btn-sm">Signup</button>
                     {/* </div> */}
                 </div>
             </nav>
             <Card style={{ display: showLogin ? "" : "none" }}>
                 <Card.Content>
-                    <Form onSubmit={handleLoginClient}className="Login-form" style={{ display: showLogin ? "" : "none" }}>
+                    <Form onSubmit={handleLoginClient} className="Login-form" style={{ display: showLogin ? "" : "none" }}>
                         <Form.Field required>
                             <label>Username</label>
-                            <input 
-                            placeholder='Username' 
-                            type="text"
-                            name='username' 
-                            value={username}
-                            onChange={(e)=>setUsername(e.target.value)}
+                            <input
+                                placeholder='Username'
+                                type="text"
+                                name='username'
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                             />
                         </Form.Field>
                         <Form.Field required>
                             <label>Password</label>
-                            <input 
-                            placeholder='Password' 
-                            type="password"
-                            name='password' 
-                            value={password}
-                            onChange={(e)=>setPassword(e.target.value)}
+                            <input
+                                placeholder='Password'
+                                type="password"
+                                name='password'
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </Form.Field>
                         <Form.Field>
@@ -105,64 +105,64 @@ function Login({ handleLoginClient }) {
 
             <Card style={{ display: showSignup ? "" : "none" }}>
                 <Card.Content>
-                    <Form onSubmit={handleSubmitClient}className="signup-form" style={{ display: showSignup ? "" : "none" }}>
+                    <Form onSubmit={handleSubmitClient} className="signup-form" style={{ display: showSignup ? "" : "none" }}>
                         <Form.Field required>
                             <label>Avatar</label>
-                            <input 
-                            placeholder='avatar'
-                            type="text"
-                            name='avatar' 
-                            value={avatar}
-                            onChange={(e)=>setAvatar(e.target.value)}
+                            <input
+                                placeholder='avatar'
+                                type="text"
+                                name='avatar'
+                                value={avatar}
+                                onChange={(e) => setAvatar(e.target.value)}
                             />
                         </Form.Field>
                         <Form.Field required>
                             <label>Name</label>
-                            <input 
-                            placeholder='Name' 
-                            type="text"
-                            name='name' 
-                            value={name}
-                            onChange={(e)=>setName(e.target.value)}/>
+                            <input
+                                placeholder='Name'
+                                type="text"
+                                name='name'
+                                value={name}
+                                onChange={(e) => setName(e.target.value)} />
                         </Form.Field>
                         <Form.Field required>
                             <label>Username</label>
-                            <input 
-                            placeholder='username' 
-                            type="text"
-                            name='username' 
-                            value={username}
-                            onChange={(e)=>setUsername(e.target.value)}
+                            <input
+                                placeholder='username'
+                                type="text"
+                                name='username'
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                             />
                         </Form.Field>
                         <Form.Field required>
                             <label>Email</label>
-                            <input 
-                            placeholder='email' 
-                            type="text"
-                            name='email' 
-                            value={email}
-                            onChange={(e)=>setEmail(e.target.value)}
+                            <input
+                                placeholder='email'
+                                type="text"
+                                name='email'
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </Form.Field>
                         <Form.Field required>
                             <label>Password</label>
-                            <input 
-                            placeholder='password'
-                            type="text"
-                            name='password' 
-                            value={password}
-                            onChange={(e)=>setPassword(e.target.value)} 
+                            <input
+                                placeholder='password'
+                                type="text"
+                                name='password'
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </Form.Field>
                         <Form.Field required>
                             <label>Location</label>
-                            <input 
-                            placeholder='City' 
-                            type="text"
-                            name='location' 
-                            value={location}
-                            onChange={(e)=>setLocation(e.target.value)}
+                            <input
+                                placeholder='City'
+                                type="text"
+                                name='location'
+                                value={location}
+                                onChange={(e) => setLocation(e.target.value)}
                             />
                         </Form.Field>
                         <Form.Field required>
@@ -170,27 +170,9 @@ function Login({ handleLoginClient }) {
                         </Form.Field>
                         <Button type='submit'>Submit</Button>
                     </Form>
-                    {/* <Form className="signup-form" style={{ display: showSignup ? "" : "none" }}>
-                        <Form.Group>
-                            <Form.Input label='Name' placeholder='Name' />
-                            <Form.Input label='Email' placeholder='Email' />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Input label='Location' placeholder='Location' />
-                            <Form.Input label='Username' placeholder='Username' />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Input label='Avatar' placeholder='Avatar' />
-                            <Form.Input label='Password' placeholder='Password' />
-                        </Form.Group>
-                        <Form.Checkbox label='I agree to the Terms and Conditions' />
-                        <Button type='submit'>Submit</Button>
-                    </Form> */}
                 </Card.Content>
             </Card>
-
-
-
+            <br />
         </>
     )
 }

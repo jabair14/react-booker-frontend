@@ -38,7 +38,7 @@ function ProfilePage({ currentUser, setCurrentUser }) {
             password,
             username,
         }
-        console.log(formData)
+        // console.log(formData)
 
         fetch(`http://127.0.0.1:3000/clients/${currentUser}`, {
             method: "PATCH",
@@ -50,9 +50,10 @@ function ProfilePage({ currentUser, setCurrentUser }) {
         })
             .then(res => res.json())
             .then(client => {
-                console.log(client)
-                history.push(`/clients/${currentUser}`)
+                // console.log(client)
                 setCurrentUser(client)
+                setUser(client)
+                history.push(`/clients/${currentUser}`)
             })
     }
 
@@ -76,7 +77,7 @@ function ProfilePage({ currentUser, setCurrentUser }) {
                             <li className="nav-item">
                                 <NavLink className="nav-link active" aria-current="page" to="/djs">DJs</NavLink>
                             </li>
-                            
+
                         </ul>
                     </div>
                 </div>
@@ -108,9 +109,8 @@ function ProfilePage({ currentUser, setCurrentUser }) {
                                     type="text"
                                     name='avatar'
                                     value={avatar}
-                                    // defaultValue={user.avatar}
+                                    defaultValue={user.avatar}
                                     onChange={(e) => setAvatar(e.target.value)}
-                                    
                                 />
                             </Form.Field>
                             <Form.Field required>
@@ -179,6 +179,7 @@ function ProfilePage({ currentUser, setCurrentUser }) {
                     </Modal>
                 </Card.Content>
             </Card>
+            <br/>
         </>
     )
 }
