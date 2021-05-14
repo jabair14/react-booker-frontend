@@ -3,16 +3,17 @@ import {useState} from 'react';
 function SearchBar({ setSearchTerm }) {
     const [search, setSearch] = useState('')
 
-    function handleSubmit(e) {
-        e.preventDefault()
+    function handleSubmit() {
+        // e.preventDefault()
         console.log("Submitted");
-        setSearchTerm(search)
+        // setSearchTerm(search)
+        setSearch(setSearchTerm)
     }
     return (
         <nav className="navbar navbar-dark bg-dark">
             <div className="container-fluid">
                 <a className="navbar-brand"/>
-                <form className="d-flex" onSubmit={handleSubmit} >
+                <form className="d-flex" onChange={handleSubmit} >
                     <input 
                     className="form-control me-2" 
                     type="text" 
@@ -21,7 +22,7 @@ function SearchBar({ setSearchTerm }) {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     />
-                    <button className="btn btn-outline-success" type="submit">Search</button>
+                    {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
                 </form>
             </div>
         </nav>

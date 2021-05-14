@@ -149,7 +149,7 @@ function Login({ handleLoginClient }) {
                             <label>Password</label>
                             <input
                                 placeholder='password'
-                                type="text"
+                                type="password"
                                 name='password'
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}

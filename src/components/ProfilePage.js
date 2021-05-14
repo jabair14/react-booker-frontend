@@ -147,7 +147,7 @@ function ProfilePage({ currentUser, setCurrentUser }) {
                                 <label>Password</label>
                                 <input
                                     placeholder={user.password}
-                                    type="text"
+                                    type="password"
                                     name='password'
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}

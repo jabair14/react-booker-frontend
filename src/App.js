@@ -67,6 +67,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+      <img src="https://i.ibb.co/8B8f1mf/cover.png" class="img-fluid" alt="logo" style={{ width: "65%", height: 140 }} />
         <Switch>
           <Route exact path="/">
             <img src="https://crackmagazine.net/wp-content/uploads/2021/03/191116_PRINTWORKS_BuggedOut_JakeDavis_@hungryvisuals-3677-scaled.jpg" class="img-fluid" alt="dj-controls" style={{ width: "100%", height: 350 }} />
